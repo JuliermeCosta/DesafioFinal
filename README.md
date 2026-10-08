@@ -53,40 +53,47 @@ flowchart TD
     classDef dbStyle fill:#2b6cb0,stroke:#1a365d,stroke-width:2px,color:#fff;
 
     subgraph API ["DesafioFinal (.NET 10)"]
-            
-        subgraph AdapterIn ["Adapter - In"]
-            Controllers["<b>Controllers</b><br/><i>(Clientes, Pedidos, Produtos)</i><br/>Endpoints REST"]
-            Filters["<b>Filters</b><br/><i>(EnableBufferingAttribute)</i><br/>Buffering HTTP para PATCH"]
-        end
+        direction LR
 
         subgraph Application ["Application"]
-            PortsIn["<b>Ports In e Facades</b><br/><i>(*IFacade / *Facade)</i><br/>Orquestração dos casos de uso"]
-            AppMappers["<b>DTOs e Mappers</b><br/><i>(DTOs, Converters, Mappers)</i><br/>Transformação de dados"]
-            PortsOut["<b>Ports Out</b><br/><i>(*IRepository)</i><br/>Contratos de persistência"]
+            PortsIn["<b>Port / In</b><br/><i>(IClienteFacade, IPedidoFacade, IProdutoFacade)</i><br/>Contratos dos Casos de Uso"]
+            Usecases["<b>Usecase (Facades)</b><br/><i>(ClienteFacade, PedidoFacade, ProdutoFacade)</i><br/>Orquestração de Casos de Uso"]
+            DTOsMappers["<b>DTO e Mapper</b><br/><i>(DTOs, Converters, Mappers)</i><br/>Transformação e Mapeamento de Dados"]
+            PortsOut["<b>Port / Out</b><br/><i>(IClienteRepository, IPedidoRepository, IProdutoRepository)</i><br/>Contratos de Persistência"]
         end
 
         subgraph Domain ["Domain"]
-            Models["<b>Models e Services</b><br/><i>(Entities e Validators)</i><br/>Regras de negócio e validações"]
+            Models["<b>Model</b><br/><i>(Cliente, Pedido, Produto, ModelBase)</i><br/>Entidades de Negócio"]
+            Services["<b>Service</b><br/><i>(ValidatorServices)</i><br/>Serviços e Validações de Domínio"]
         end
 
-        subgraph AdapterOut ["Adapter - Out"]
-            Repos["<b>Repositories</b><br/><i>(Cliente, Pedido, Produto Repos)</i><br/>EF Core / Change Tracker"]
-            DbContext["<b>Database Context</b><br/><i>(SqlLiteDbContext)</i><br/>Sessões e mapeamento SQLite"]
+        subgraph AdapterOut ["Adapter / Out / Database (Saída)"]
+            Repos["<b>Repository</b><br/><i>(Cliente, Pedido, Produto Repositories)</i><br/>Implementação Concreta / BaseRepository"]
+            PersistenceMappers["<b>Mapper e Entity</b><br/><i>(PersistenceMappers e Entities)</i><br/>Mapeamento de/para Tabelas"]
+            DbContext["<b>Context e Configuration</b><br/><i>(SqlLiteDbContext e Configurations)</i><br/>Sessão EF Core / Fluent API"]
+        end
+
+        subgraph AdapterIn ["Adapter / In (Entrada)"]
+            Controllers["<b>Controllers</b><br/><i>(Clientes, Pedidos, Produtos)</i><br/>Endpoints HTTP REST"]
+            Filters["<b>Filters</b><br/><i>(EnableBufferingAttribute)</i><br/>Middlewares / Buffering HTTP"]
         end
     end
 
-SQLite[("<b>SQLite Engine</b><br/><i>(SQLite In-Memory)</i><br/>Banco de dados relacional")]
+    SQLite[("<b>SQLite Engine</b><br/><i>(SQLite In-Memory)</i><br/>Banco de dados relacional")]
 
     class Title,API,AdapterIn,Application,Domain,AdapterOut boundaryStyle;
-    class Controllers,Filters,PortsIn,AppMappers,PortsOut,Models,Repos,DbContext componentStyle;
+    class Controllers,Filters,PortsIn,Usecases,DTOsMappers,PortsOut,Models,Services,Repos,PersistenceMappers,DbContext componentStyle;
     class SQLite dbStyle;
 
     Controllers --> Filters
     Controllers --> PortsIn
-    PortsIn --> AppMappers
-    PortsIn --> Models
-    PortsIn --> PortsOut
+    PortsIn --> Usecases
+    Usecases --> DTOsMappers
+    Usecases --> Models
+    Usecases --> Services
+    Usecases --> PortsOut
     PortsOut --> Repos
+    Repos --> PersistenceMappers
     Repos --> DbContext
     DbContext --> SQLite
 ```
