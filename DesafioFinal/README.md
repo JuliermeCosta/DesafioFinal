@@ -10,7 +10,7 @@ flowchart LR
 
     Cliente["<b>Cliente / Consumidor API</b><br/><i>(Usuário / Sistema)</i><br/>Consome a API REST"]
         
-    DesafioFinal["<b>DesafioFinal System</b><br/><i>(.NET 10 API)</i><br/>Gestão comercial e regras"]
+    DesafioFinal["<b>DesafioFinal</b><br/><i>(.NET 10 API)</i>"]
 
     SQLite[("<b>SQLite Engine</b><br/><i>(SQLite In-Memory)</i><br/>Banco de dados relacional")]
 
