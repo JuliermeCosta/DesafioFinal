@@ -1,0 +1,6 @@
+@DesafioFinal_HostAddress = http://localhost:5171
+
+GET {{DesafioFinal_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
