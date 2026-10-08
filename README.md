@@ -10,7 +10,7 @@ flowchart LR
 
     Cliente["<b>Cliente / Consumidor API</b><br/><i>(Usuário / Sistema)</i><br/>Consome a API REST"]
         
-    DesafioFinal["<b>DesafioFinal</b><br/><i>(.NET 10 API)</i>"]
+    DesafioFinal["<b>DesafioFinal API</b><br/><i>(.NET 10)</i>"]
 
     class Title boundaryStyle;
     class Cliente actorStyle;
@@ -31,7 +31,7 @@ flowchart LR
     Cliente["<b>Cliente / Consumidor API</b><br/><i>(Usuário / Sistema)</i><br/>Envia requisições"]
 
     subgraph SystemBoundary ["DesafioFinal"]
-        API["<b>DesafioFinal (.NET 10)</b><br/><i>(ASP.NET Core Web API)</i><br/>Endpoints Clientes, Pedidos e Produtos"]
+        API["<b>DesafioFinal API (.NET 10)</b><br/><i>(ASP.NET Core Web API)</i><br/>Endpoints Clientes, Pedidos e Produtos"]
             
         SQLite[("<b>SQLite Engine</b><br/><i>(SQLite In-Memory)</i><br/>Persistência em memória")]
     end
@@ -52,7 +52,7 @@ flowchart TD
     classDef componentStyle fill:#3182ce,stroke:#2b6cb0,stroke-width:1px,color:#fff;
     classDef dbStyle fill:#2b6cb0,stroke:#1a365d,stroke-width:2px,color:#fff;
 
-    subgraph API ["DesafioFinal (.NET 10)"]
+    subgraph API ["DesafioFinal API (.NET 10)"]
         direction LR
 
         subgraph Application ["Application"]
