@@ -12,15 +12,12 @@ flowchart LR
         
     DesafioFinal["<b>DesafioFinal</b><br/><i>(.NET 10 API)</i>"]
 
-    SQLite[("<b>SQLite Engine</b><br/><i>(SQLite In-Memory)</i><br/>Banco de dados relacional")]
-
     class Title boundaryStyle;
     class Cliente actorStyle;
     class DesafioFinal systemStyle;
     class SQLite extSystemStyle;
 
     Cliente -->|"Requisições REST<br/><i>[HTTP / JSON]</i>"| DesafioFinal
-    DesafioFinal -->|"Lê e grava dados<br/><i>[SQL / EF Core]</i>"| SQLite
 ```
 
 #### Nível 2: Diagrama de Contêineres
