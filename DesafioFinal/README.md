@@ -30,7 +30,7 @@ flowchart LR
 
     Cliente["<b>Cliente / Consumidor API</b><br/><i>(Usuário / Sistema)</i><br/>Envia requisições"]
 
-    subgraph SystemBoundary ["DesafioFinal Boundary"]
+    subgraph SystemBoundary ["DesafioFinal"]
         API["<b>DesafioFinal (.NET 10)</b><br/><i>(ASP.NET Core Web API)</i><br/>Endpoints Clientes, Pedidos e Produtos"]
             
         SQLite[("<b>SQLite Engine</b><br/><i>(SQLite In-Memory)</i><br/>Persistência em memória")]
@@ -59,13 +59,13 @@ flowchart TD
             Filters["<b>Filters</b><br/><i>(EnableBufferingAttribute)</i><br/>Buffering HTTP para PATCH"]
         end
 
-        subgraph Application ["Application Layer"]
+        subgraph Application ["Application"]
             PortsIn["<b>Ports In e Facades</b><br/><i>(*IFacade / *Facade)</i><br/>Orquestração dos casos de uso"]
             AppMappers["<b>DTOs e Mappers</b><br/><i>(DTOs, Converters, Mappers)</i><br/>Transformação de dados"]
             PortsOut["<b>Ports Out</b><br/><i>(*IRepository)</i><br/>Contratos de persistência"]
         end
 
-        subgraph Domain ["Domain Layer"]
+        subgraph Domain ["Domain"]
             Models["<b>Models e Services</b><br/><i>(Entities e Validators)</i><br/>Regras de negócio e validações"]
         end
 
