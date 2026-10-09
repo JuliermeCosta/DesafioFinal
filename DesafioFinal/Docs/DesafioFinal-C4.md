@@ -1,6 +1,6 @@
 ### Arquitetura da API (C4 Model)
 
-#### NÃ­vel 1: Diagrama de Contexto
+#### Nível 1: Diagrama de Contexto
 ```mermaid
 flowchart LR
     classDef boundaryStyle fill:#2d3748,stroke:#4a5568,stroke-width:2px,color:#fff,font-weight:bold;
@@ -8,7 +8,7 @@ flowchart LR
     classDef systemStyle fill:#1168bd,stroke:#0b4884,stroke-width:2px,color:#fff;
     classDef extSystemStyle fill:#2b6cb0,stroke:#1a365d,stroke-width:2px,color:#fff;
 
-    Cliente["<b>Cliente / Consumidor API</b><br/><i>(UsuÃ¡rio / Sistema)</i><br/>Consome a API REST"]
+    Cliente["<b>Cliente / Consumidor API</b><br/><i>(Usuário / Sistema)</i><br/>Consome a API REST"]
         
     DesafioFinal["<b>DesafioFinal API</b><br/><i>(.NET 10)</i>"]
 
@@ -17,10 +17,10 @@ flowchart LR
     class DesafioFinal systemStyle;
     class SQLite extSystemStyle;
 
-    Cliente -->|"RequisiÃ§Ãµes REST<br/><i>[HTTP / JSON]</i>"| DesafioFinal
+    Cliente -->|"Requisições REST<br/><i>[HTTP / JSON]</i>"| DesafioFinal
 ```
 
-#### NÃ­vel 2: Diagrama de ContÃªineres
+#### Nível 2: Diagrama de Contêineres
 ```mermaid
 flowchart LR
     classDef boundaryStyle fill:#2d3748,stroke:#4a5568,stroke-width:2px,color:#fff,font-weight:bold;
@@ -28,12 +28,12 @@ flowchart LR
     classDef containerStyle fill:#1168bd,stroke:#0b4884,stroke-width:2px,color:#fff;
     classDef dbStyle fill:#2b6cb0,stroke:#1a365d,stroke-width:2px,color:#fff;
 
-    Cliente["<b>Cliente / Consumidor API</b><br/><i>(UsuÃ¡rio / Sistema)</i><br/>Envia requisiÃ§Ãµes"]
+    Cliente["<b>Cliente / Consumidor API</b><br/><i>(Usuário / Sistema)</i><br/>Envia requisições"]
 
     subgraph SystemBoundary ["DesafioFinal"]
         API["<b>DesafioFinal API (.NET 10)</b><br/><i>(ASP.NET Core Web API)</i><br/>Endpoints Clientes, Pedidos e Produtos"]
             
-        SQLite[("<b>SQLite Engine</b><br/><i>(SQLite In-Memory)</i><br/>PersistÃªncia em memÃ³ria")]
+        SQLite[("<b>SQLite Engine</b><br/><i>(SQLite In-Memory)</i><br/>Persistência em memória")]
     end
 
     class Title,SystemBoundary boundaryStyle;
@@ -42,10 +42,10 @@ flowchart LR
     class SQLite dbStyle;
 
     Cliente -->|"Consome REST<br/><i>[HTTP / JSON]</i>"| API
-    API -->|"Consultas e persistÃªncia<br/><i>[EF Core / SQL]</i>"| SQLite
+    API -->|"Consultas e persistência<br/><i>[EF Core / SQL]</i>"| SQLite
 ```
 
-#### NÃ­vel 3: Diagrama de Componentes (Hexagonal / Ports e Adapters)
+#### Nível 3: Diagrama de Componentes (Hexagonal / Ports e Adapters)
 ```mermaid
 flowchart TD
     classDef boundaryStyle fill:#2d3748,stroke:#4a5568,stroke-width:2px,color:#fff,font-weight:bold;
@@ -57,20 +57,20 @@ flowchart TD
 
         subgraph Application ["Application"]
             PortsIn["<b>Port / In</b><br/><i>(IClienteFacade, IPedidoFacade, IProdutoFacade)</i><br/>Contratos dos Casos de Uso"]
-            Usecases["<b>Usecase (Facades)</b><br/><i>(ClienteFacade, PedidoFacade, ProdutoFacade)</i><br/>OrquestraÃ§Ã£o de Casos de Uso"]
-            DTOsMappers["<b>DTO e Mapper</b><br/><i>(DTOs, Converters, Mappers)</i><br/>TransformaÃ§Ã£o e Mapeamento de Dados"]
-            PortsOut["<b>Port / Out</b><br/><i>(IClienteRepository, IPedidoRepository, IProdutoRepository)</i><br/>Contratos de PersistÃªncia"]
+            Usecases["<b>Usecase (Facades)</b><br/><i>(ClienteFacade, PedidoFacade, ProdutoFacade)</i><br/>Orquestração de Casos de Uso"]
+            DTOsMappers["<b>DTO e Mapper</b><br/><i>(DTOs, ResponseBaseDto, ResultResponse, Converters, Mappers)</i><br/>Transformação e Mapeamento de Dados"]
+            PortsOut["<b>Port / Out</b><br/><i>(IClienteRepository, IPedidoRepository, IProdutoRepository, IBaseRepository)</i><br/>Contratos de Persistência"]
         end
 
         subgraph Domain ["Domain"]
-            Models["<b>Model</b><br/><i>(Cliente, Pedido, Produto, ModelBase)</i><br/>Entidades de NegÃ³cio"]
-            Services["<b>Service</b><br/><i>(ValidatorServices)</i><br/>ServiÃ§os e ValidaÃ§Ãµes de DomÃ­nio"]
+            Models["<b>Model</b><br/><i>(Cliente, Pedido, Produto, ModelBase)</i><br/>Entidades de Negócio"]
+            Services["<b>Service</b><br/><i>(ClienteValidatorService, PedidoValidatorService, ProdutoValidatorService)</i><br/>Serviços e Validações de Domínio"]
         end
 
-        subgraph AdapterOut ["Adapter / Out / Database (SaÃ­da)"]
-            Repos["<b>Repository</b><br/><i>(Cliente, Pedido, Produto Repositories)</i><br/>ImplementaÃ§Ã£o Concreta / BaseRepository"]
-            PersistenceMappers["<b>Mapper e Entity</b><br/><i>(PersistenceMappers e Entities)</i><br/>Mapeamento de/para Tabelas"]
-            DbContext["<b>Context e Configuration</b><br/><i>(SqlLiteDbContext e Configurations)</i><br/>SessÃ£o EF Core / Fluent API"]
+        subgraph AdapterOut ["Adapter / Out / Database (Saída)"]
+            Repos["<b>Repository</b><br/><i>(Cliente, Pedido, Produto Repositories)</i><br/>Implementação Concreta / BaseRepository"]
+            PersistenceMappers["<b>Mapper e Entity</b><br/><i>(Cliente/Pedido/ProdutoPersistenceMapper e Entities)</i><br/>Mapeamento de/para Tabelas"]
+            DbContext["<b>Context e Configuration</b><br/><i>(SqlLiteDbContext e Configurations)</i><br/>Sessão EF Core / Fluent API"]
         end
 
         subgraph AdapterIn ["Adapter / In (Entrada)"]

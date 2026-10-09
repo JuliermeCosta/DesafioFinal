@@ -1,0 +1,146 @@
+<mxfile host="app.diagrams.net" pages="3">
+  <diagram id="c4ctx" name="C4 - Nível 1 - Contexto">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c4ctx-2" value="Diagrama de Contexto - DesafioFinal API" style="text;html=1;fontSize=18;fontStyle=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="600" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="c4ctx-3" value="&lt;b&gt;Cliente / Consumidor API&lt;/b&gt;&lt;br&gt;&lt;i&gt;[Usuário / Sistema]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Consome a API REST" style="html=1;dashed=0;whiteSpace=wrap;fillColor=#08427b;strokeColor=#073B6F;fontColor=#ffffff;shape=mxgraph.c4.person2;align=center;metaEdit=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="110" width="200" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="c4ctx-4" value="&lt;b&gt;DesafioFinal API&lt;/b&gt;&lt;br&gt;&lt;i&gt;[.NET 10]&lt;/i&gt;&lt;br&gt;&lt;br&gt;API REST de Clientes, Pedidos e Produtos" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1168bd;strokeColor=#0B4884;fontColor=#ffffff;align=center;" vertex="1" parent="1">
+          <mxGeometry x="520" y="140" width="280" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="c4ctx-5" value="Requisições REST&lt;br&gt;&lt;i&gt;[HTTP / JSON]&lt;/i&gt;" style="endArrow=blockThin;endFill=1;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#333333;fontSize=11;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="c4ctx-3" target="c4ctx-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="c4cnt" name="C4 - Nível 2 - Contêineres">
+    <mxGraphModel dx="1144" dy="586" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c4cnt-2" parent="1" style="text;html=1;fontSize=18;fontStyle=1;align=left;" value="Diagrama de Contêineres - DesafioFinal" vertex="1">
+          <mxGeometry height="30" width="600" x="40" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cnt-3" parent="1" style="html=1;dashed=0;whiteSpace=wrap;fillColor=#08427b;strokeColor=#073B6F;fontColor=#ffffff;shape=mxgraph.c4.person2;align=center;metaEdit=1;" value="&lt;b&gt;Cliente / Consumidor API&lt;/b&gt;&lt;br&gt;&lt;i&gt;[Usuário / Sistema]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Envia requisições" vertex="1">
+          <mxGeometry height="180" width="180" x="40" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cnt-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=3;fillColor=none;strokeColor=#666666;dashed=1;dashPattern=8 4;strokeWidth=2;verticalAlign=top;align=center;spacingLeft=12;spacingTop=4;fontStyle=1;fontSize=14;fontColor=#666666;" value="DesafioFinal" vertex="1">
+          <mxGeometry height="270" width="760" x="380" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cnt-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#438DD5;strokeColor=#3C7FC0;fontColor=#ffffff;align=center;" value="&lt;b&gt;DesafioFinal API (.NET 10)&lt;/b&gt;&lt;br&gt;&lt;i&gt;[ASP.NET Core Web API]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Endpoints de Clientes, Pedidos e Produtos" vertex="1">
+          <mxGeometry height="130" width="280" x="420" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cnt-6" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#438DD5;strokeColor=#3C7FC0;fontColor=#ffffff;align=center;" value="&lt;b&gt;SQLite Engine&lt;/b&gt;&lt;br&gt;&lt;i&gt;[SQLite In-Memory]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Persistência em memória" vertex="1">
+          <mxGeometry height="150" width="200" x="880" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cnt-7" edge="1" parent="1" source="c4cnt-3" style="endArrow=blockThin;endFill=1;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#333333;fontSize=11;labelBackgroundColor=#ffffff;" target="c4cnt-5" value="Consome REST&lt;br&gt;&lt;i&gt;[HTTP / JSON]&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cnt-8" edge="1" parent="1" source="c4cnt-5" style="endArrow=blockThin;endFill=1;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#333333;fontSize=11;labelBackgroundColor=#ffffff;" target="c4cnt-6" value="Consultas e persistência&lt;br&gt;&lt;i&gt;[EF Core / SQL]&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="c4cmp" name="C4 - Nível 3 - Componentes">
+    <mxGraphModel dx="1776" dy="909" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c4cmp-2" parent="1" style="text;html=1;fontSize=18;fontStyle=1;align=left;" value="Diagrama de Componentes - DesafioFinal API (Hexagonal / Ports e Adapters)" vertex="1">
+          <mxGeometry height="30" width="900" x="40" y="22" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=3;fillColor=none;strokeColor=#2d3748;dashed=1;dashPattern=8 4;strokeWidth=2;verticalAlign=top;align=center;spacingLeft=12;spacingTop=4;fontStyle=1;fontSize=14;fontColor=#2d3748;" value="DesafioFinal API (.NET 10)" vertex="1">
+          <mxGeometry height="990" width="1400" x="20" y="72" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=3;fillColor=none;strokeColor=#666666;dashed=1;dashPattern=8 4;strokeWidth=2;verticalAlign=top;align=center;spacingLeft=12;spacingTop=4;fontStyle=1;fontSize=14;fontColor=#666666;" value="Adapter / In (Entrada)" vertex="1">
+          <mxGeometry height="340" width="280" x="50" y="122" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=3;fillColor=none;strokeColor=#666666;dashed=1;dashPattern=8 4;strokeWidth=2;verticalAlign=top;align=center;spacingLeft=12;spacingTop=4;fontStyle=1;fontSize=14;fontColor=#666666;" value="Application" vertex="1">
+          <mxGeometry height="500" width="620" x="380" y="122" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=3;fillColor=none;strokeColor=#666666;dashed=1;dashPattern=8 4;strokeWidth=2;verticalAlign=top;align=center;spacingLeft=12;spacingTop=4;fontStyle=1;fontSize=14;fontColor=#666666;" value="Domain" vertex="1">
+          <mxGeometry height="340" width="320" x="1060" y="122" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=3;fillColor=none;strokeColor=#666666;dashed=1;dashPattern=8 4;strokeWidth=2;verticalAlign=top;align=center;spacingLeft=12;spacingTop=4;fontStyle=1;fontSize=14;fontColor=#666666;" value="Adapter / Out / Database (Saída)" vertex="1">
+          <mxGeometry height="340" width="680" x="380" y="662" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#85BBF0;strokeColor=#5D82A8;fontColor=#000000;align=center;" value="&lt;b&gt;Controllers&lt;/b&gt;&lt;br&gt;&lt;i&gt;[Clientes, Pedidos, Produtos]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Endpoints HTTP REST" vertex="1">
+          <mxGeometry height="110" width="240" x="70" y="172" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#85BBF0;strokeColor=#5D82A8;fontColor=#000000;align=center;" value="&lt;b&gt;Filters&lt;/b&gt;&lt;br&gt;&lt;i&gt;[EnableBufferingAttribute]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Middlewares / Buffering HTTP" vertex="1">
+          <mxGeometry height="110" width="240" x="70" y="322" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#85BBF0;strokeColor=#5D82A8;fontColor=#000000;align=center;" value="&lt;b&gt;Port / In&lt;/b&gt;&lt;br&gt;&lt;i&gt;[IClienteFacade, IPedidoFacade, IProdutoFacade]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Contratos dos Casos de Uso" vertex="1">
+          <mxGeometry height="110" width="280" x="400" y="172" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#85BBF0;strokeColor=#5D82A8;fontColor=#000000;align=center;" value="&lt;b&gt;Usecase (Facades)&lt;/b&gt;&lt;br&gt;&lt;i&gt;[ClienteFacade, PedidoFacade, ProdutoFacade]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Orquestração de Casos de Uso" vertex="1">
+          <mxGeometry height="110" width="280" x="400" y="322" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#85BBF0;strokeColor=#5D82A8;fontColor=#000000;align=center;" value="&lt;b&gt;Port / Out&lt;/b&gt;&lt;br&gt;&lt;i&gt;[IClienteRepository, IPedidoRepository, IProdutoRepository, IBaseRepository]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Contratos de Persistência" vertex="1">
+          <mxGeometry height="110" width="280" x="400" y="472" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#85BBF0;strokeColor=#5D82A8;fontColor=#000000;align=center;" value="&lt;b&gt;DTO e Mapper&lt;/b&gt;&lt;br&gt;&lt;i&gt;[DTOs, ResponseBaseDto, ResultResponse, Converters, Mappers]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Transformação e Mapeamento de Dados" vertex="1">
+          <mxGeometry height="110" width="260" x="720" y="472" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#85BBF0;strokeColor=#5D82A8;fontColor=#000000;align=center;" value="&lt;b&gt;Model&lt;/b&gt;&lt;br&gt;&lt;i&gt;[Cliente, Pedido, Produto, ModelBase]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Entidades de Negócio" vertex="1">
+          <mxGeometry height="110" width="280" x="1080" y="172" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#85BBF0;strokeColor=#5D82A8;fontColor=#000000;align=center;" value="&lt;b&gt;Service&lt;/b&gt;&lt;br&gt;&lt;i&gt;[ClienteValidatorService, PedidoValidatorService, ProdutoValidatorService]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Serviços e Validações de Domínio" vertex="1">
+          <mxGeometry height="110" width="280" x="1080" y="322" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-16" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#85BBF0;strokeColor=#5D82A8;fontColor=#000000;align=center;" value="&lt;b&gt;Repository&lt;/b&gt;&lt;br&gt;&lt;i&gt;[Cliente, Pedido, Produto Repositories]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Implementação concreta / BaseRepository" vertex="1">
+          <mxGeometry height="110" width="280" x="400" y="712" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-17" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#85BBF0;strokeColor=#5D82A8;fontColor=#000000;align=center;" value="&lt;b&gt;Mapper e Entity&lt;/b&gt;&lt;br&gt;&lt;i&gt;[Cliente/Pedido/ProdutoPersistenceMapper e Entities]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Mapeamento de/para Tabelas" vertex="1">
+          <mxGeometry height="110" width="280" x="760" y="712" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-18" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#85BBF0;strokeColor=#5D82A8;fontColor=#000000;align=center;" value="&lt;b&gt;Context e Configuration&lt;/b&gt;&lt;br&gt;&lt;i&gt;[SqlLiteDbContext e Configurations]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Sessão EF Core / Fluent API" vertex="1">
+          <mxGeometry height="110" width="280" x="400" y="862" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-19" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#438DD5;strokeColor=#3C7FC0;fontColor=#ffffff;align=center;" value="&lt;b&gt;SQLite Engine&lt;/b&gt;&lt;br&gt;&lt;i&gt;[SQLite In-Memory]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Banco de dados relacional" vertex="1">
+          <mxGeometry height="150" width="200" x="440" y="1102" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-20" edge="1" parent="1" source="c4cmp-8" style="endArrow=blockThin;endFill=1;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#333333;fontSize=11;labelBackgroundColor=#ffffff;" target="c4cmp-9" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-21" edge="1" parent="1" source="c4cmp-8" style="endArrow=blockThin;endFill=1;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#333333;fontSize=11;labelBackgroundColor=#ffffff;" target="c4cmp-10" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-22" edge="1" parent="1" source="c4cmp-10" style="endArrow=blockThin;endFill=1;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#333333;fontSize=11;labelBackgroundColor=#ffffff;" target="c4cmp-11" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-23" edge="1" parent="1" source="c4cmp-11" style="endArrow=blockThin;endFill=1;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#333333;fontSize=11;labelBackgroundColor=#ffffff;" target="c4cmp-13" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-24" edge="1" parent="1" source="c4cmp-11" style="endArrow=blockThin;endFill=1;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#333333;fontSize=11;labelBackgroundColor=#ffffff;" target="c4cmp-14" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-25" edge="1" parent="1" source="c4cmp-11" style="endArrow=blockThin;endFill=1;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#333333;fontSize=11;labelBackgroundColor=#ffffff;" target="c4cmp-15" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-26" edge="1" parent="1" source="c4cmp-11" style="endArrow=blockThin;endFill=1;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#333333;fontSize=11;labelBackgroundColor=#ffffff;" target="c4cmp-12" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-27" edge="1" parent="1" source="c4cmp-12" style="endArrow=blockThin;endFill=1;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#333333;fontSize=11;labelBackgroundColor=#ffffff;" target="c4cmp-16" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-28" edge="1" parent="1" source="c4cmp-16" style="endArrow=blockThin;endFill=1;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#333333;fontSize=11;labelBackgroundColor=#ffffff;" target="c4cmp-17" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-29" edge="1" parent="1" source="c4cmp-16" style="endArrow=blockThin;endFill=1;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#333333;fontSize=11;labelBackgroundColor=#ffffff;" target="c4cmp-18" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4cmp-30" edge="1" parent="1" source="c4cmp-18" style="endArrow=blockThin;endFill=1;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#333333;fontSize=11;labelBackgroundColor=#ffffff;" target="c4cmp-19" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
