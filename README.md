@@ -58,18 +58,18 @@ flowchart TD
         subgraph Application ["Application"]
             PortsIn["<b>Port / In</b><br/><i>(IClienteFacade, IPedidoFacade, IProdutoFacade)</i><br/>Contratos dos Casos de Uso"]
             Usecases["<b>Usecase (Facades)</b><br/><i>(ClienteFacade, PedidoFacade, ProdutoFacade)</i><br/>Orquestração de Casos de Uso"]
-            DTOsMappers["<b>DTO e Mapper</b><br/><i>(DTOs, Converters, Mappers)</i><br/>Transformação e Mapeamento de Dados"]
-            PortsOut["<b>Port / Out</b><br/><i>(IClienteRepository, IPedidoRepository, IProdutoRepository)</i><br/>Contratos de Persistência"]
+            DTOsMappers["<b>DTO e Mapper</b><br/><i>(DTOs, ResponseBaseDto, ResultResponse, Converters, Mappers)</i><br/>Transformação e Mapeamento de Dados"]
+            PortsOut["<b>Port / Out</b><br/><i>(IClienteRepository, IPedidoRepository, IProdutoRepository, IBaseRepository)</i><br/>Contratos de Persistência"]
         end
 
         subgraph Domain ["Domain"]
             Models["<b>Model</b><br/><i>(Cliente, Pedido, Produto, ModelBase)</i><br/>Entidades de Negócio"]
-            Services["<b>Service</b><br/><i>(ValidatorServices)</i><br/>Serviços e Validações de Domínio"]
+            Services["<b>Service</b><br/><i>(ClienteValidatorService, PedidoValidatorService, ProdutoValidatorService)</i><br/>Serviços e Validações de Domínio"]
         end
 
         subgraph AdapterOut ["Adapter / Out / Database (Saída)"]
             Repos["<b>Repository</b><br/><i>(Cliente, Pedido, Produto Repositories)</i><br/>Implementação Concreta / BaseRepository"]
-            PersistenceMappers["<b>Mapper e Entity</b><br/><i>(PersistenceMappers e Entities)</i><br/>Mapeamento de/para Tabelas"]
+            PersistenceMappers["<b>Mapper e Entity</b><br/><i>(Cliente/Pedido/ProdutoPersistenceMapper e Entities)</i><br/>Mapeamento de/para Tabelas"]
             DbContext["<b>Context e Configuration</b><br/><i>(SqlLiteDbContext e Configurations)</i><br/>Sessão EF Core / Fluent API"]
         end
 
