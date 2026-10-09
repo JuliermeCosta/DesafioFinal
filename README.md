@@ -1,6 +1,6 @@
 # 📌 Documentação do Projeto
 
-[📖 README](./README.md) | [📂 Estrutura de Pastas](./Estrutura%20de%20pastas.md)
+[📖 README (C4 MODEL)](./README.md) | [📂 Estrutura de Pastas](./Estrutura%20de%20pastas.md)
 
 ---
 
